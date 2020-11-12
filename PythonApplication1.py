@@ -3,7 +3,9 @@
 import datetime
 import numpy as np
 import pandas as pd
-import jsm
+#import jsm
+import YahooFinanceSpider as y
+c = y.Crawler()
 
 
 # 株価のデータ取得（銘柄コード, 開始日, 終了日）
@@ -14,10 +16,11 @@ def get_stock(code, start_date, end_date):
     
     year, month, day = end_date.split("-") 
     end = datetime.date(int(year), int(month), int(day))
-
+    print(start) 
     # 株価データ取得
-    q = jsm.Quotes()
-    target = q.get_historical_prices(code, jsm.DAILY, start_date = start, end_date = end)
+    #q = jsm.Quotes()
+    target = c.get_price(code, start, end, y.DAILY) 
+    #target = q.get_historical_prices(code, jsm.DAILY, start_date = start, end_date = end)
     
     # 項目ごとにリストに格納して返す
     date = [data.date for data in target]
