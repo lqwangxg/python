@@ -22,3 +22,6 @@ txtPwd.send_keys("1818918wf")
 btnSubmit=driver.find_element_by_class_name('button-primary')
 btnSubmit.submit()
 driver.find_element_by_name("order_list").click()
+
+#read config.txt
+#get info and export to excel.
